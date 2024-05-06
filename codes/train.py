@@ -116,8 +116,10 @@ class Trainer:
                 self.dataset_debugger = get_dataset_debugger(dataset_opt)
                 if self.dataset_debugger is not None and resume_state is not None:
                     self.dataset_debugger.load_state(opt_get(resume_state, ['dataset_debugger_state'], {}))
+                print(f"Train Set: {len(self.train_set)} and Batch Size: {dataset_opt['batch_size']}")
                 train_size = int(math.ceil(len(self.train_set) / dataset_opt['batch_size']))
                 total_iters = int(opt['train']['niter'])
+                print(f"Train Size: {train_size}")
                 self.total_epochs = int(math.ceil(total_iters / train_size))
                 if opt['dist']:
                     self.train_sampler = DistIterSampler(self.train_set, self.world_size, self.rank, dataset_ratio)
