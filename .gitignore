@@ -166,3 +166,5 @@ archive
 NOTES_unredacted.md
 pyfastmp3decoder/
 
+!voxlab_gpt.yml
+!datasets/**/*
